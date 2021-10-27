@@ -6,8 +6,7 @@ type SelectProps = {
     options: string[];
 }
 
-const Select: FC<SelectProps> = (props) => {
-    const {selectTitle, options} = props
+const Select: FC<SelectProps> = ({selectTitle, options}) => {
     
     return (
         <div className={classes.select}>

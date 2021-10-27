@@ -1,0 +1,17 @@
+.books {
+    height: 100vh;
+
+    &__title {
+        text-align: center;
+        color: rgb(107, 107, 107);
+        padding: 10px 0;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

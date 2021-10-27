@@ -1,0 +1,44 @@
+.book {
+    flex: 0 1 20%;
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(243,242,241);
+
+    &__cover {
+        width: 200px;
+        height: 300px;
+        margin: 10% auto;
+        box-shadow: 15px 15px 20px rgb(167, 167, 167);
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__description {
+        flex: 1 1 auto;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+
+        &_item {
+            font-size: 20px;
+            color: lightgrey;
+        }
+
+        &_ctgry {
+            text-decoration: underline;
+        }
+
+        &_title {
+            font-weight: bold;
+            color: black;
+            padding: 3% 0;
+            overflow: hidden;
+            flex: 1 1 auto;
+        }
+
+    }
+}
