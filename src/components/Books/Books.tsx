@@ -1,80 +1,28 @@
-import { FC } from "react";
-import Book from "../Book/Book";
+import { FC, useEffect } from "react";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import BookCard from "../BookCard/BookCard";
 import classes from "./books.module.scss";
 
-const Books: FC = (props) => {
-    const testData = [
-        {
-            cover: "https://m.media-amazon.com/images/I/51tu6P6IUIL.jpg",
-            category: "Computer ",
-            title: "Fullstack developer NodeJS + React/Vue ",
-            author: "Dmitry Mefodyev ",
-        },
-        {
-            cover: "https://images-na.ssl-images-amazon.com/images/I/71Yd2ACrDcL.jpg",
-            category: "Computer",
-            title: "Fullstack  developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-        {
-            cover: "https://images-na.ssl-images-amazon.com/images/I/71Yd2ACrDcL.jpg",
-            category: "Computer",
-            title: "Fullstack developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-        {
-            cover: "https://images-na.ssl-images-amazon.com/images/I/71Yd2ACrDcL.jpg",
-            category: "Computer",
-            title: "Fullstack developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-        {
-            cover: "https://images-na.ssl-images-amazon.com/images/I/71Yd2ACrDcL.jpg",
-            category: "Computer",
-            title: "Fullstack developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-        {
-            cover: "https://images-na.ssl-images-amazon.com/images/I/81CmeyJIEQL.jpg",
-            category: "Computer",
-            title: "Fullstack developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-        {
-            cover: "https://m.media-amazon.com/images/I/51E63B+BFhL._AC_SY780_.jpg",
-            category: "Computer",
-            title: "Fullstack developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-        {
-            cover: "https://m.media-amazon.com/images/I/51E63B+BFhL._AC_SY780_.jpg",
-            category: "Computer",
-            title: "Fullstack developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-        {
-            cover: "https://m.media-amazon.com/images/I/51E63B+BFhL._AC_SY780_.jpg",
-            category: "Computer",
-            title: "Fullstack developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-        {
-            cover: "https://m.media-amazon.com/images/I/51E63B+BFhL._AC_SY780_.jpg",
-            category: "Computer",
-            title: "Fullstack developer NodeJS + React/Vue",
-            author: "Dmitry Mefodyev",
-        },
-    ];
+const Books: FC = () => {
+    const { books } = useTypedSelector((store) => store.books);
+    const { fetchBooks } = useActions();
+
+
+    useEffect(() => {
+        fetchBooks();
+    }, [books.items]);
 
     return (
         <section className={classes.books}>
+            <h2 className={classes.books__title}>  Results <span>{books.totalItems}</span></h2>
             <div className={classes.books__content}>
-                {testData.map((b) => (
-                    <Book
-                        cover={b.cover}
-                        category={b.category}
-                        title={b.title}
-                        author={b.author}
+                {books.items.map((book) => (
+                    <BookCard
+                        thumbnail={book.volumeInfo.imageLinks.thumbnail}
+                        category={book.volumeInfo.categories}
+                        title={book.volumeInfo.title}
+                        author={book.volumeInfo.authors}
                     />
                 ))}
             </div>

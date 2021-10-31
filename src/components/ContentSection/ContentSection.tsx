@@ -6,8 +6,8 @@ import classes from './contentSection.module.scss'
 const ContentSection: FC = (props) => {
     return (
         <div className={classes.contentSection}>
-            <BookDescr/>
-            <h3 className={classes.contentSection__title}> Found 443 results </h3>
+            {/* <BookDescr/> */}
+            <h3 className={classes.contentSection__title}> Found <span></span> results </h3>
             <Books />
         </div>
     )

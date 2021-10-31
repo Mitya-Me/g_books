@@ -7,7 +7,7 @@ import classes from './searchForm.module.scss'
 
 
 const SearchForm: FC = (props) => {
-    const categoriesOptions = ['all', 'art', 'biography', 'computer', 'history', 'medical', 'poetry']
+    const categoriesOptions = ['all', 'art', 'biography', 'computers', 'history', 'medical', 'poetry']
     const sortOptions = ['relevance', 'newest']
 
     return (

@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import classes from './bookDescr.module.scss'
 
-const BookDescr: FC = (props) => {
+const BookDescr: FC = () => {
     return (
         <section className={classes.bookdescr}>
             <div className={classes.bookdescr__cover}>

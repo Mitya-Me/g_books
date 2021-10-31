@@ -1,12 +1,14 @@
-import SearchSection from "../SearchSection/SearchSection";
-import ContentSection from "../ContentSection/ContentSection";
 import './app.module.css';
+
+import SearchSection from "../SearchSection/SearchSection";
+import Books from '../Books/Books';
+
 
 function App() {
   return (
     <div className="app">
       <SearchSection />
-      <ContentSection/>
+      <Books />
     </div>
   );
 }
