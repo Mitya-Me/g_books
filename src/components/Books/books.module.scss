@@ -17,4 +17,14 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    &__btn {
+        padding: 25px;
+        display: flex;
+        justify-content: center;
+        
+        button {
+            padding: 15px;
+        }
+    }
 }

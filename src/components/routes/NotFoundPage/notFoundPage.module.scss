@@ -1,0 +1,35 @@
+.notFound {
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__error {
+        color: lightgrey;
+        font-weight: bold;
+        font-size: 3rem;
+        opacity: 0;
+        animation: colchanger 3s  ease-out;
+    }
+
+    &__text {
+        font-size: 30px;
+        font-weight: bold;
+        color: grey;
+    }
+}
+
+@keyframes colchanger {
+    0% {
+        color: #fa0101;
+        transform: scale(.1);
+        opacity: 1;
+    }
+
+    100% {
+        color: rgba(128, 128, 128, 0.371);
+        transform: scale(3);
+    }
+}

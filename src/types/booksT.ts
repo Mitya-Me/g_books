@@ -1,38 +1,35 @@
-export enum BooksActionTypes { 
-    FETCH_BOOKS = 'FETCH_BOOKS',
-    FETCH_BOOKS_SUCCESS = 'FETCH_BOOKS_SUCCESS',
-    FETCH_BOOKS_FAIL = 'FETCH_BOOKS_FAIL',
-    SET_BOOKS_PAGE = 'SET_BOOKS_PAGE'
+export enum BooksActionTypes {
+    FETCH_BOOKS = "FETCH_BOOKS",
+    FETCH_BOOKS_SUCCESS = "FETCH_BOOKS_SUCCESS",
+    FETCH_BOOKS_FAIL = "FETCH_BOOKS_FAIL",
+    LOAD_MORE = "LOAD_MORE",
+    LOAD_MORE_SUCCESS = "LOAD_MORE_SUCCESS",
+    LOAD_MORE_FAIL = "LOAD_MORE_FAIL",
 }
 
 interface VolumeInfo {
+    id: string;
     volumeInfo: {
         imageLinks: {
             thumbnail: string;
-        }
+        };
         categories: string[];
         title: string;
         authors: string[];
-        descriptions: string;
-        readingModes: {
-            image: boolean | null;
-        };
-    }
+        description?: string | undefined;
+    };
 }
-
 
 export interface BooksState {
     books: {
         items: Array<VolumeInfo>;
-        totalItems: number;
-    }; 
-    category: string;
+        totalItems: number | string;
+    };
     loading: boolean;
     error: null | string;
-    page: number | string;
 }
 
-interface FetchBooksAction { 
+interface FetchBooksAction {
     type: BooksActionTypes.FETCH_BOOKS;
 }
 
@@ -40,19 +37,36 @@ interface FetchBooksSuccessAction {
     type: BooksActionTypes.FETCH_BOOKS_SUCCESS;
     payload: {
         items: Array<VolumeInfo>;
-        totalItems: number;
+        totalItems: number | string;
     };
 }
 
 interface FetchBooksFailAction {
     type: BooksActionTypes.FETCH_BOOKS_FAIL;
-    payload: string
+    payload: string;
 }
 
-interface SetBooksPageAction {
-    type: BooksActionTypes.SET_BOOKS_PAGE;
-    payload: string | number;
+interface LoadMoreAction {
+    type: BooksActionTypes.LOAD_MORE;
 }
 
-export type BooksAction = FetchBooksAction | FetchBooksSuccessAction | FetchBooksFailAction | SetBooksPageAction;
+interface LoadMoreSuccessAction {
+    type: BooksActionTypes.LOAD_MORE_SUCCESS;
+    payload: {
+        items: Array<VolumeInfo>;
+        totalItems: number | string;
+    };
+}
 
+interface LoadMoreFailAction {
+    type: BooksActionTypes.LOAD_MORE_FAIL;
+    payload: string;
+}
+
+export type BooksAction =
+    | FetchBooksAction
+    | FetchBooksSuccessAction
+    | FetchBooksFailAction
+    | LoadMoreAction
+    | LoadMoreSuccessAction
+    | LoadMoreFailAction;
