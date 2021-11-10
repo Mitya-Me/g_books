@@ -4,6 +4,10 @@
     background: inherit;
     border-radius: 25px;
 
+    @media (max-width: 1024px) {
+        width: 70%;
+    }
+
     &__search {
         padding: 10px 3%;
         border-radius: inherit;
