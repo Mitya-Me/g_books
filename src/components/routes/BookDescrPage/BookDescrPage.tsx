@@ -9,12 +9,7 @@ const BookDescrPage: FC = () => {
     const history = useHistory();
 
 
-<<<<<<< HEAD
-    let filtered = () => books.filter((el) => el.id === params.id);
-    console.log(history);
-=======
     let filtered = () => books.filter(el=> el.id === params.id);
->>>>>>> feature-bookdescr-layout
 
     return (
         <>
@@ -22,12 +17,8 @@ const BookDescrPage: FC = () => {
                 <section className={classes.bookdescr}>
                     <button
                         className={classes.bookdescr__btn}
-<<<<<<< HEAD
-                        onClick={() => history.push('/')}></button>
-=======
                         onClick={() => history.push('/')}>
                     </button>
->>>>>>> feature-bookdescr-layout
                     <div className={classes.bookdescr__wrapper}>
                         <div className={classes.bookdescr__cover}>
                             <img
