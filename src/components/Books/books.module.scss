@@ -1,5 +1,4 @@
 .books {
-    height: 100vh;
 
     &__title {
         text-align: center;
@@ -15,11 +14,10 @@
     &__content {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-around;
     }
 
     &__btn {
-        padding: 25px;
         display: flex;
         justify-content: center;
         
