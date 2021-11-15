@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://mitya-me.github.io/google_books_api/static/css/main.98fe90c9.chunk.css",
-    "main.js": "https://mitya-me.github.io/google_books_api/static/js/main.fd90d267.chunk.js",
-    "main.js.map": "https://mitya-me.github.io/google_books_api/static/js/main.fd90d267.chunk.js.map",
+    "main.js": "https://mitya-me.github.io/google_books_api/static/js/main.c1eb9d0b.chunk.js",
+    "main.js.map": "https://mitya-me.github.io/google_books_api/static/js/main.c1eb9d0b.chunk.js.map",
     "runtime-main.js": "https://mitya-me.github.io/google_books_api/static/js/runtime-main.f36174f0.js",
     "runtime-main.js.map": "https://mitya-me.github.io/google_books_api/static/js/runtime-main.f36174f0.js.map",
     "static/js/2.6c31ad3b.chunk.js": "https://mitya-me.github.io/google_books_api/static/js/2.6c31ad3b.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.f36174f0.js",
     "static/js/2.6c31ad3b.chunk.js",
     "static/css/main.98fe90c9.chunk.css",
-    "static/js/main.fd90d267.chunk.js"
+    "static/js/main.c1eb9d0b.chunk.js"
   ]
 }
