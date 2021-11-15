@@ -16,7 +16,8 @@ const Input: FC<InputProps> = ({handleKey, searchValue, setSearchValue}) => {
                 onChange={e => setSearchValue(e.target.value)}
                 onKeyDown={handleKey}
                 type='text'
-                className={classes.input__search} placeholder="Find your book" />
+                className={classes.input__search}
+                placeholder="Find your book" />
             <button className={classes.input__btn}></button>
         </div>
     );
