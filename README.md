@@ -1,2 +1,2 @@
-## _in progress..._
+## _in progress_
 https://mitya-me.github.io/google_books_api/
