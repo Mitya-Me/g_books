@@ -40,8 +40,8 @@ const BookCard: FC<BookCardProps> = ({
                     <li className={classes.book__description_item}>
                         {" "}
                         {author
-                            ? author.join(", ")
-                            : "author not specified"}{" "}
+                            ?  author.length > 6 ? `${author.join(', ').slice(0, 40)}...` : author.join(', ')
+                            : "author not specified"}
                     </li>
                 </ul>
             </Link>
