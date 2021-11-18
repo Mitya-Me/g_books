@@ -1,9 +1,7 @@
 import axios from "axios";
 import { Dispatch } from "redux";
+import { API_URL } from "../../base";
 import { BooksAction, BooksActionTypes } from "../../types/booksT";
-
-const API_URL = process.env.API_URL,
-    API_KEY = process.env.API_KEY;
 
 export const fetchBooks = (
     title: string,
@@ -15,12 +13,19 @@ export const fetchBooks = (
         try {
             dispatch({ type: BooksActionTypes.FETCH_BOOKS });
             const response = await axios.get(
-                `${API_URL}q=${title}+subject=${category}&orderBy=${orderBy}&startIndex=${startIndex}&maxResults=30&key=${API_KEY}`
-            );
+                `${API_URL}q=${title}+subject=${category}&orderBy=${orderBy}&startIndex=${startIndex}&maxResults=30&key=${process.env.REACT_APP_API_KEY}`
+            )
+            
             dispatch({
                 type: BooksActionTypes.FETCH_BOOKS_SUCCESS,
                 payload: response.data,
             });
+
+            dispatch({
+                type: BooksActionTypes.ADD_QSTRING,
+                payload: title,
+            })
+            
         } catch {
             dispatch({
                 type: BooksActionTypes.FETCH_BOOKS_FAIL,
@@ -40,13 +45,15 @@ export const loadMoreBooks = (
         try {
             dispatch({ type: BooksActionTypes.FETCH_BOOKS });
             const response = await axios.get(
-                `${API_URL}q=${title}+subject=${category}&orderBy=${orderBy}&startIndex=${startIndex}&maxResults=30&key=${API_KEY}`
+                `${API_URL}q=${title}+subject=${category}&orderBy=${orderBy}&startIndex=${startIndex}&maxResults=30&key=${process.env.REACT_APP_API_KEY}`
             );
             
             dispatch({
                 type: BooksActionTypes.LOAD_MORE_SUCCESS,
                 payload: response.data,
             });
+
+            
         } catch {
             dispatch({
                 type: BooksActionTypes.LOAD_MORE_FAIL,
@@ -55,3 +62,13 @@ export const loadMoreBooks = (
         }
     };
 };
+
+
+export const increaseCount = (value: number) => { 
+    return (dispatch: Dispatch<BooksAction>) => { 
+        dispatch({
+            type: BooksActionTypes.INCREASE_COUNT,
+            payload: value
+        })
+    } 
+}

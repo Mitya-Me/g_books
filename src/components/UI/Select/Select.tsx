@@ -18,7 +18,7 @@ const Select: FC<SelectProps> = ({selectTitle, options, setValue, value}) => {
                 onChange={e => setValue(e.target.value)}
             >
                 {
-                    options.map(opt => <option value={opt}> {opt} </option>)
+                    options.map((opt, index) => <option key={opt} value={opt}> {opt} </option>)
                 }
             </select>
         </div>

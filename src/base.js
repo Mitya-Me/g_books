@@ -4,3 +4,5 @@ export const categoriesOptions = [
 ]
 
 export const sortOptions = ['relevance', 'newest']
+
+export const API_URL = 'https://www.googleapis.com/books/v1/volumes?'

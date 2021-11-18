@@ -2,6 +2,8 @@ export enum BooksActionTypes {
     FETCH_BOOKS = "FETCH_BOOKS",
     FETCH_BOOKS_SUCCESS = "FETCH_BOOKS_SUCCESS",
     FETCH_BOOKS_FAIL = "FETCH_BOOKS_FAIL",
+    ADD_QSTRING = 'ADD_QSTRING',
+    INCREASE_COUNT = 'INCREASE_COUNT',
     LOAD_MORE = "LOAD_MORE",
     LOAD_MORE_SUCCESS = "LOAD_MORE_SUCCESS",
     LOAD_MORE_FAIL = "LOAD_MORE_FAIL",
@@ -25,6 +27,8 @@ export interface BooksState {
         items: Array<VolumeInfo>;
         totalItems: number | string;
     };
+    queryString: string;
+    count: number;
     loading: boolean;
     error: null | string;
 }
@@ -44,6 +48,17 @@ interface FetchBooksSuccessAction {
 interface FetchBooksFailAction {
     type: BooksActionTypes.FETCH_BOOKS_FAIL;
     payload: string;
+}
+
+
+interface AddQStringAction {
+    type: BooksActionTypes.ADD_QSTRING;
+    payload: string;
+}
+
+interface IncreaseCountAction {
+    type: BooksActionTypes.INCREASE_COUNT;
+    payload: number;
 }
 
 interface LoadMoreAction {
@@ -69,4 +84,6 @@ export type BooksAction =
     | FetchBooksFailAction
     | LoadMoreAction
     | LoadMoreSuccessAction
-    | LoadMoreFailAction;
+    | LoadMoreFailAction
+    | AddQStringAction
+    | IncreaseCountAction;

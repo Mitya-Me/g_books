@@ -5,8 +5,13 @@ import BookCard from "../BookCard/BookCard";
 import classes from "./books.module.scss";
 
 const Books: FC = () => {
-    const { books } = useTypedSelector((store) => store.books);
-    const { loadMoreBooks } = useActions()
+    const { books, queryString, count, } = useTypedSelector((store) => store.books);
+    const { loadMoreBooks, increaseCount } = useActions()
+
+    const handleLoadMore = () => {
+        increaseCount(count + 30)
+        loadMoreBooks(queryString, 'All', 'newest', count)
+    }
 
     return (
         <section className={classes.books}>
@@ -19,6 +24,7 @@ const Books: FC = () => {
                 {books.items.length ? (
                     books.items.map((book) => (
                         <BookCard
+                            key={`${Math.floor(Math.random() * 1000000)}`}
                             id={book.id}
                             thumbnail={
                                 book.volumeInfo.imageLinks === undefined
@@ -37,7 +43,7 @@ const Books: FC = () => {
                 )}
             </div>
             <div className={classes.books__btn}>
-                <button onClick={() => loadMoreBooks('python', 'All', 'newest')}>Load more</button>
+                <button onClick={() => handleLoadMore()}>Load more</button>
             </div>
         </section>
     );

@@ -8,13 +8,12 @@ const BookDescrPage: FC = () => {
     const books = useTypedSelector((state) => state.books.books.items);
     const history = useHistory();
 
-
-    let filtered = () => books.filter(el=> el.id === params.id);
+    let filtered =  books.filter(el=> el.id === params.id);
 
     return (
         <>
-            {filtered().map((b) => (
-                <section className={classes.bookdescr}>
+            {filtered.map((b) => (
+                <section key={b.volumeInfo.title + Math.floor(Math.random() * 10)} className={classes.bookdescr}>
                     <button
                         className={classes.bookdescr__btn}
                         onClick={() => history.push('/')}>
@@ -39,7 +38,7 @@ const BookDescrPage: FC = () => {
                                     {b.volumeInfo.title}
                                 </li>
                                 <li className={classes.bookdescr__text_author}>
-                                    { b.volumeInfo.authors.join(', ')}
+                                    { b.volumeInfo.authors.length > 1 ? b.volumeInfo.authors.join(', ') : b.volumeInfo.authors}
                                 </li>
                             </ul>
                             <div className={classes.bookdescr__text_info}>

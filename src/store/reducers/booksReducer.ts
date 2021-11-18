@@ -6,6 +6,8 @@ const defaultState: BooksState = {
         items: [],
         totalItems: "",
     },
+    queryString: '',
+    count: 0,
     loading: true,
     error: null,
 };
@@ -19,10 +21,16 @@ export const booksReducer = (
             return { ...state, loading: true };
 
         case BooksActionTypes.FETCH_BOOKS_SUCCESS:
-            return { ...state, books: action.payload, loading: false };
+            return { ...state, books: action.payload, loading: false, };
 
         case BooksActionTypes.FETCH_BOOKS_FAIL:
             return { ...state, error: action.payload, loading: false };
+        
+        case BooksActionTypes.ADD_QSTRING:
+            return { ...state, queryString: action.payload, loading: false, count: 0}
+    
+        case BooksActionTypes.INCREASE_COUNT:
+            return { ...state, count: action.payload, loading: false}
 
         case BooksActionTypes.LOAD_MORE:
             return { ...state, loading: true };
@@ -34,6 +42,7 @@ export const booksReducer = (
             };
             return { ...state, books: loadBooks, loading: false };
         }
+            
         case BooksActionTypes.LOAD_MORE_FAIL:
             return { ...state, error: action.payload, loading: false };
 
