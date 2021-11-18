@@ -2,11 +2,13 @@ import { FC } from "react";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import BookCard from "../BookCard/BookCard";
+import ScrollToTopBtn from "../UI/Button/ScrollToTopBtn/ScrollToTopBtn";
 import classes from "./books.module.scss";
 
 const Books: FC = () => {
     const { books, queryString, count, } = useTypedSelector((store) => store.books);
     const { loadMoreBooks, increaseCount } = useActions()
+    
 
     const handleLoadMore = () => {
         increaseCount(count + 30)
@@ -45,6 +47,7 @@ const Books: FC = () => {
             <div className={classes.books__btn}>
                 <button onClick={() => handleLoadMore()}>Load more</button>
             </div>
+            <ScrollToTopBtn/>
         </section>
     );
 };

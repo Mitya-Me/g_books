@@ -1,0 +1,21 @@
+.toTopBtn {
+    color: grey;
+    padding: 2px;
+    background: inherit;
+    font-size: 2.5rem;
+    transition: .5s ease;
+    position: sticky;
+    bottom: 10px;
+    left: 1%;
+    
+    &:hover {
+        color: lightseagreen;
+        transform: translateY(-5px);
+    }
+    
+}
+
+.hidden {
+    opacity: 0;
+}
+
