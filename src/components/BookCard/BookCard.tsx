@@ -1,5 +1,10 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+
+import { slicedAndJoinedArr } from "../../helpers/slicedAndJoinedArray";
+import { slicedString } from "../../helpers/slicedString";
+
+
 import classes from "./bookCard.module.scss";
 
 type BookCardProps = {
@@ -17,6 +22,7 @@ const BookCard: FC<BookCardProps> = ({
     title,
     author,
 }) => {
+
     return (
         <div className={classes.book}>
             <Link to={`/bookId=${id}`}>
@@ -28,20 +34,21 @@ const BookCard: FC<BookCardProps> = ({
                         className={`${classes.book__description_item} ${classes.book__description_ctgry}`}
                     >
                         {category
-                            ? category.join(" ")
+                            ? category.join(", ")
                             : "category not specified"}
                     </li>
                     <li
                         className={`${classes.book__description_item} ${classes.book__description_title}`}
                     >
-                        {" "}
-                        {title}{" "}
+                        {title 
+                            ? slicedString(title, 55)
+                            : 'title not specified'
+                        }
                     </li>
                     <li className={classes.book__description_item}>
-                        {" "}
                         {author
-                            ?  author.length > 6 ? `${author.join(', ').slice(0, 40)}...` : author.join(', ')
-                            : "author not specified"}
+                            ?  slicedAndJoinedArr(author)
+                            : 'author not specified'}
                     </li>
                 </ul>
             </Link>
